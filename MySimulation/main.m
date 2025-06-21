@@ -24,10 +24,10 @@ function Main()
             rand_quantity = floor(exponential_random(1/25, input_number));
             rand_refuel = floor(exponential_random(1/25, input_number));
         case 3
-            rand_interarrival = uniform_rvg_floor(input_number, 0, 100);
-            rand_petrol = uniform_rvg_floor(input_number, 0, 100);
-            rand_quantity = uniform_rvg_floor(input_number, 0, 100);
-            rand_refuel = uniform_rvg_floor(input_number, 0, 100);
+            rand_interarrival = uniform_random(input_number, 0, 100);
+            rand_petrol = uniform_random(input_number, 0, 100);
+            rand_quantity = uniform_random(input_number, 0, 100);
+            rand_refuel = uniform_random(input_number, 0, 100);
         otherwise
             error('Invalid choice selected');
     end
