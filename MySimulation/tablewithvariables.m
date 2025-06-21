@@ -1,5 +1,22 @@
+%global declarations
+global petrol_names 
+global petrol_ranges
+global petrol_prices
+global peak_inter_arrival_times
+global peak_inter_arrival_ranges
+global quantity_ranges
+global quantity_amount
+global refuel_ranges
+global refuel_times
+global nonpeak_inter_arrival_times
+global nonpeak_inter_arrival_ranges
+
+
+
+
+
 % PEAK INTER-ARRIVAL TIME TABLE
-peak_inter_arrival_times = [1 2 4 7 11 12];
+peak_inter_arrival_times = [2 3 4 5 6 7];
 peak_inter_arrival_probs = [0.10 0.05 0.25 0.30 0.20 0.10];
 
 % Calculate CDF and ranges
@@ -24,7 +41,7 @@ disp(' ');
 
 %NON-PEAK INTER-ARRIVAL TIME TABLE 
 
-nonpeak_inter_arrival_times = [3 5 6 8 9 10];
+nonpeak_inter_arrival_times = [8 9 10 11 12 1];
 nonpeak_inter_arrival_probs = [0.10 0.05 0.25 0.30 0.20 0.10];
 
 % Calculate CDF and ranges
