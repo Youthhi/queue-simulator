@@ -41,10 +41,13 @@ function Main()
 end
 
 function simulate_scenario(rand_interarrival, rand_petrol, rand_quantity, rand_refuel, input_number, is_peak)
-    if is_peak
+    if is_peak==1
         disp('========== PEAK HOUR SIMULATION ==========');
-    else
+    elseif is_peak==0
         disp('======== NON-PEAK HOUR SIMULATION ========');
+        
+    else
+        error('Invalid choice for peak.Please enter 1 for peak and 0 for nonpeak');    
     end
 
     global peak_inter_arrival_ranges peak_inter_arrival_times
@@ -135,9 +138,23 @@ function simulate_scenario(rand_interarrival, rand_petrol, rand_quantity, rand_r
         row = {i, arrival_time(i), refuel_time, start_time, end_time, waiting_time, refuel_time + waiting_time};
         pump_tables{assigned_pump}(end+1, :) = row;
 
-        fprintf('Vehicle %d arrived at minute %.0f and began refueling with %s at Pump Island %s.\n', ...
-            i, arrival_time(i), petrol_type, char(64 + assigned_pump));
-        fprintf('Vehicle %d finished refueling and departed at minute %.0f.\n', i, end_time);
+        
+        if refuel_time==0%if refuel time=0 it means the card is rejected
+            fprintf('Vehicle %d arrived at minute %.0f but card was rejected. No refueling occurred at Pump Island %s.\n', ...
+            i, arrival_time(i), char(64 + assigned_pump));
+            fprintf('Vehicle %d did not refuel and departed at minute %.0f.\n', i, end_time);
+        else
+            if waiting_times(i)>0
+                fprintf('Vehicle %d arrived at minute %.0f and waited %.0f minutes before refueling with %s at Pump Island %s.\n', ...
+                i, arrival_time(i), waiting_time, petrol_type, char(64 + assigned_pump));
+
+            else            
+                fprintf('Vehicle %d arrived at minute %.0f and began refueling with %s at Pump Island %s.\n', ...
+                i, arrival_time(i), petrol_type, char(64 + assigned_pump));
+            end 
+              
+            fprintf('Vehicle %d finished refueling and departed at minute %.0f.\n', i, end_time);
+        end    
     end
 
     fprintf('\n--- VEHICLE DETAILS TABLE ---\n');

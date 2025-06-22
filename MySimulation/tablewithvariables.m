@@ -15,9 +15,9 @@ global nonpeak_inter_arrival_ranges
 
 
 
-% PEAK INTER-ARRIVAL TIME TABLE
-peak_inter_arrival_times = [2 3 4 5 6 7];
-peak_inter_arrival_probs = [0.10 0.05 0.25 0.30 0.20 0.10];
+% PEAK HOUR INTER-ARRIVAL TIME TABLE
+peak_inter_arrival_times = [1 2 3 4 5];
+peak_inter_arrival_probs = [0.45 0.35 0.10 0.05 0.05];
 
 % Calculate CDF and ranges
 peak_inter_arrival_cdf = cumsum(peak_inter_arrival_probs);
@@ -39,10 +39,10 @@ for i = 1:length(peak_inter_arrival_times)
 end
 disp(' ');
 
-%NON-PEAK INTER-ARRIVAL TIME TABLE 
+%NON-PEAK HOUR INTER-ARRIVAL TIME TABLE 
 
-nonpeak_inter_arrival_times = [8 9 10 11 12 1];
-nonpeak_inter_arrival_probs = [0.10 0.05 0.25 0.30 0.20 0.10];
+nonpeak_inter_arrival_times = [1 2 3 4 5];
+nonpeak_inter_arrival_probs = [0.25 0.40 0.25 0.05 0.05];
 
 % Calculate CDF and ranges
 nonpeak_inter_arrival_cdf = cumsum(nonpeak_inter_arrival_probs);
